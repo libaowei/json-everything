@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <LangVersion>latest</LangVersion>
+	  <RootNamespace>Json.Schema.OpenApi</RootNamespace>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageId>JsonSchema.Net.OpenApi</PackageId>
+	  <Authors>Greg Dennis</Authors>
+	  <Company />
+	  <Product>JsonSchema.Net.OpenApi</Product>
+	  <Description>Open API Specification 3.1 vocabularies and meta-schemas built with JsonSchema.Net.</Description>
+	  <PackageProjectUrl>https://github.com/gregsdennis/json-everything</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/gregsdennis/json-everything</RepositoryUrl>
+	  <PackageTags>json-schema validation schema json open-api</PackageTags>
+	  <Version>1.0.0</Version>
+	  <FileVersion>1.0.0.0</FileVersion>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <AssemblyName>JsonSchema.Net.OpenApi</AssemblyName>
+	  <PackageIcon>json-logo-256.png</PackageIcon>
+	  <PackageReleaseNotes>https://gregsdennis.github.io/json-everything/release-notes/json-schema-openapi.html</PackageReleaseNotes>
+	  <DocumentationFile>JsonSchema.Net.OpenApi.xml</DocumentationFile>
+	  <IncludeSymbols>true</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
+	  <EmbedUntrackedSources>true</EmbedUntrackedSources>
+	  <SignAssembly>true</SignAssembly>
+	  <AssemblyOriginatorKeyFile>../json-everything.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <ProjectReference Include="..\JsonSchema\JsonSchema.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\Resources\json-logo-256.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
