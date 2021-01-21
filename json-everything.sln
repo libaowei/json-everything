@@ -63,6 +63,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schema2020-12", "schema2020
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.Net.OpenApi", "JsonSchema.Net.OpenApi\JsonSchema.Net.OpenApi.csproj", "{D1DACB99-3CBE-45A3-9312-B12DDAB25A7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.Net.OpenApi.Tests", "JsonSchema.Net.OpenApi.Tests\JsonSchema.Net.OpenApi.Tests.csproj", "{65BE513C-75BA-4957-867C-58D39DD211C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{D1DACB99-3CBE-45A3-9312-B12DDAB25A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1DACB99-3CBE-45A3-9312-B12DDAB25A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1DACB99-3CBE-45A3-9312-B12DDAB25A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65BE513C-75BA-4957-867C-58D39DD211C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65BE513C-75BA-4957-867C-58D39DD211C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65BE513C-75BA-4957-867C-58D39DD211C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65BE513C-75BA-4957-867C-58D39DD211C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
