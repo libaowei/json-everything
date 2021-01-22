@@ -61,9 +61,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schema2020-12", "schema2020
 		Meta-Schemas\2020-12\validation.json = Meta-Schemas\2020-12\validation.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.Net.OpenApi", "JsonSchema.Net.OpenApi\JsonSchema.Net.OpenApi.csproj", "{D1DACB99-3CBE-45A3-9312-B12DDAB25A7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.OpenApi", "JsonSchema.OpenApi\JsonSchema.OpenApi.csproj", "{D1DACB99-3CBE-45A3-9312-B12DDAB25A7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.Net.OpenApi.Tests", "JsonSchema.Net.OpenApi.Tests\JsonSchema.Net.OpenApi.Tests.csproj", "{65BE513C-75BA-4957-867C-58D39DD211C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.OpenApi.Tests", "JsonSchema.OpenApi.Tests\JsonSchema.OpenApi.Tests.csproj", "{65BE513C-75BA-4957-867C-58D39DD211C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
