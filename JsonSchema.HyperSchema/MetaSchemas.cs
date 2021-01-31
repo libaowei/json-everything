@@ -31,7 +31,7 @@ namespace Json.Schema.HyperSchema
 					new JsonSchemaBuilder().Ref(Schema.MetaSchemas.Draft201909Id),
 					new JsonSchemaBuilder().Ref(HyperSchemaVocab201909Uri)
 				)
-				.Links(new Link("self", "{+%24id}"));
+				.Links(new LinkDescription("self", "{+%24id}"));
 
 		public static readonly JsonSchema HyperSchemaVocab201909 =
 			new JsonSchemaBuilder()
@@ -51,7 +51,7 @@ namespace Json.Schema.HyperSchema
 							.Items(new JsonSchemaBuilder().Ref(HyperSchemaLinks201909Uri))
 					)
 				)
-				.Links(new Link("self", "{+%24id}"));
+				.Links(new LinkDescription("self", "{+%24id}"));
 
 		public static readonly JsonSchema HyperSchemaLinks201909 =
 			new JsonSchemaBuilder()

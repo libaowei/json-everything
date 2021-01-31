@@ -2,7 +2,7 @@
 {
 	public static class JsonSchemaBuilderExtensions
 	{
-		public static JsonSchemaBuilder Links(this JsonSchemaBuilder builder, Link link)
+		public static JsonSchemaBuilder Links(this JsonSchemaBuilder builder, LinkDescription link)
 		{
 			return builder;
 		}

@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Json.Pointer;
 
 namespace Json.Schema.HyperSchema
 {
-	public class Link
+	//[JsonConverter(typeof(LinkJsonConverter))]
+	public class LinkDescription
 	{
 		private const string DefaultSubmissionMediaType = "application/json";
 
@@ -24,16 +28,29 @@ namespace Json.Schema.HyperSchema
 		public JsonSchema SubmissionSchema { get; set; }
 		public string Comment { get; set; }
 
-		public Link(string rel, string href)
+		public LinkDescription(string rel, string href)
 		{
 			Href = href;
 			Rel = new List<string> {rel};
 		}
 
-		public Link(List<string> rel, string href)
+		public LinkDescription(List<string> rel, string href)
 		{
 			Rel = rel;
 			Href = href;
+		}
+	}
+
+	public class LinkJsonConverter : JsonConverter<LinkDescription>
+	{
+		public override LinkDescription Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override void Write(Utf8JsonWriter writer, LinkDescription value, JsonSerializerOptions options)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
