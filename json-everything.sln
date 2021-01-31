@@ -25,6 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schema2019-09", "schema2019
 		Meta-Schemas\2019-09\content.json = Meta-Schemas\2019-09\content.json
 		Meta-Schemas\2019-09\core.json = Meta-Schemas\2019-09\core.json
 		Meta-Schemas\2019-09\format.json = Meta-Schemas\2019-09\format.json
+		Meta-Schemas\2019-09\hyper-schema-links.json = Meta-Schemas\2019-09\hyper-schema-links.json
+		Meta-Schemas\2019-09\hyper-schema-vocab.json = Meta-Schemas\2019-09\hyper-schema-vocab.json
+		Meta-Schemas\2019-09\hyper-schema.json = Meta-Schemas\2019-09\hyper-schema.json
 		Meta-Schemas\2019-09\meta-data.json = Meta-Schemas\2019-09\meta-data.json
 		Meta-Schemas\2019-09\schema.json = Meta-Schemas\2019-09\schema.json
 		Meta-Schemas\2019-09\validation.json = Meta-Schemas\2019-09\validation.json
@@ -60,6 +63,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schema2020-12", "schema2020
 		Meta-Schemas\2020-12\unevaluated.json = Meta-Schemas\2020-12\unevaluated.json
 		Meta-Schemas\2020-12\validation.json = Meta-Schemas\2020-12\validation.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.HyperSchema", "JsonSchema.HyperSchema\JsonSchema.HyperSchema.csproj", "{5673FC53-1E98-480A-A57C-F62EC21A3F30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +128,10 @@ Global
 		{9515FF22-CBE2-44D8-8FAC-5F7AF4CDF98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9515FF22-CBE2-44D8-8FAC-5F7AF4CDF98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9515FF22-CBE2-44D8-8FAC-5F7AF4CDF98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5673FC53-1E98-480A-A57C-F62EC21A3F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5673FC53-1E98-480A-A57C-F62EC21A3F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5673FC53-1E98-480A-A57C-F62EC21A3F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5673FC53-1E98-480A-A57C-F62EC21A3F30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
