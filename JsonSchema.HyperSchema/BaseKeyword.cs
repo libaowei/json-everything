@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Tavis.UriTemplates;
 
 namespace Json.Schema.HyperSchema
 {
@@ -13,9 +14,9 @@ namespace Json.Schema.HyperSchema
 	{
 		internal const string Name = "base";
 
-		public string Template { get; }
+		public UriTemplate Template { get; }
 
-		public BaseKeyword(string template)
+		public BaseKeyword(UriTemplate template)
 		{
 			Template = template;
 		}
