@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 namespace Json.Schema.HyperSchema
 {
 	[SchemaKeyword(Name)]
+	[SchemaPriority(10)]
 	[SchemaDraft(Draft.Draft201909)]
 	[SchemaDraft(Draft.Draft202012)]
 	[Vocabulary(Vocabularies.HyperSchema201909Id)]
@@ -15,6 +16,7 @@ namespace Json.Schema.HyperSchema
 	{
 		internal const string Name = "links";
 
+		// rel must be unique across the array
 		public IReadOnlyList<LinkDescription> Links { get; }
 
 		public LinksKeyword(IEnumerable<LinkDescription> links)
@@ -24,6 +26,8 @@ namespace Json.Schema.HyperSchema
 
 		public void Validate(ValidationContext context)
 		{
+			// get annotation result of base
+
 			throw new NotImplementedException();
 		}
 
@@ -41,7 +45,7 @@ namespace Json.Schema.HyperSchema
 
 		public override int GetHashCode()
 		{
-			return (Links != null ? Links.GetHashCode() : 0);
+			return Links != null ? Links.GetHashCode() : 0;
 		}
 	}
 

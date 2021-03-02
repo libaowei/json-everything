@@ -64,7 +64,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schema2020-12", "schema2020
 		Meta-Schemas\2020-12\validation.json = Meta-Schemas\2020-12\validation.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.HyperSchema", "JsonSchema.HyperSchema\JsonSchema.HyperSchema.csproj", "{5673FC53-1E98-480A-A57C-F62EC21A3F30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonSchema.HyperSchema", "JsonSchema.HyperSchema\JsonSchema.HyperSchema.csproj", "{5673FC53-1E98-480A-A57C-F62EC21A3F30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSchema.HyperSchema.Tests", "JsonSchema.HyperSchema.Tests\JsonSchema.HyperSchema.Tests.csproj", "{D27CFFCC-ADAE-490D-BEE0-087C7C4D8B38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -132,6 +134,10 @@ Global
 		{5673FC53-1E98-480A-A57C-F62EC21A3F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5673FC53-1E98-480A-A57C-F62EC21A3F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5673FC53-1E98-480A-A57C-F62EC21A3F30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D27CFFCC-ADAE-490D-BEE0-087C7C4D8B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D27CFFCC-ADAE-490D-BEE0-087C7C4D8B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D27CFFCC-ADAE-490D-BEE0-087C7C4D8B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D27CFFCC-ADAE-490D-BEE0-087C7C4D8B38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

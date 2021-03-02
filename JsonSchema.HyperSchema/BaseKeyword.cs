@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Tavis.UriTemplates;
 
 namespace Json.Schema.HyperSchema
 {
@@ -23,6 +22,8 @@ namespace Json.Schema.HyperSchema
 
 		public void Validate(ValidationContext context)
 		{
+			// process uri template, then save that uri as annotation result
+
 			throw new NotImplementedException();
 		}
 

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Tavis.UriTemplates;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Json.Schema.HyperSchema
 {
