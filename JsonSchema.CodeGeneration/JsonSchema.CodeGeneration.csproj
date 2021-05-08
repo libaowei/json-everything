@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<OutputType>Exe</OutputType>
+	  <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+	  <AssemblyName>JsonSchema.Net.CodeGeneration</AssemblyName>
+	  <RootNamespace>Json.Schema.CodeGeneration</RootNamespace>
+	  <PackAsTool>true</PackAsTool>
+	  <ToolCommandName>schema-codegen</ToolCommandName>
+	  <Authors>Greg Dennis</Authors>
+	  <Description>Extends JsonSchema.Net to provide C# code generation from schemas.</Description>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <PackageProjectUrl>https://github.com/gregsdennis/json-everything</PackageProjectUrl>
+	  <PackageIcon>json-logo-256.png</PackageIcon>
+	  <RepositoryUrl>https://github.com/gregsdennis/json-everything</RepositoryUrl>
+	  <PackageTags>json-schema validation schema json generation code-generation</PackageTags>
+	  <PackageReleaseNotes>https://gregsdennis.github.io/json-everything/release-notes/json-schema-ode-generation.html</PackageReleaseNotes>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <LangVersion>latest</LangVersion>
+	  <Version>1.0.0</Version>
+	  <FileVersion>1.0.0.0</FileVersion>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+	  <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.2.0" />
+		<PackageReference Include="CommandLineParser" Version="2.8.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\docs_source\release-notes\json-schema-codegen.md" Link="json-schema-codegen.md" />
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\Resources\json-logo-256.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\JsonSchema\JsonSchema.csproj" />
+	</ItemGroup>
+
+</Project>
