@@ -7,7 +7,6 @@ namespace Json.Schema.CodeGeneration
 		protected override void Load(ContainerBuilder builder)
 		{
 			builder.RegisterType<Runner>().AsImplementedInterfaces();
-			builder.RegisterType<SchemaLoader>().AsImplementedInterfaces();
 		}
 	}
 }

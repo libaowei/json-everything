@@ -20,4 +20,12 @@
 		<ProjectReference Include="..\JsonSchema.CodeGeneration\JsonSchema.CodeGeneration.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Compile Remove="Integration\*.cs" />
+		<None Include="Integration\*.cs" />
+	  <None Update="Integration\**\*">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

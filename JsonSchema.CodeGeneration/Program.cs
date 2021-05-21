@@ -12,6 +12,7 @@ namespace Json.Schema.CodeGeneration
 		{
 			var builder = new ContainerBuilder();
 			builder.RegisterModule<AppModule>();
+			builder.RegisterModule<IOModule>();
 
 			_container = builder.Build();
 
