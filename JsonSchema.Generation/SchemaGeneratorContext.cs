@@ -67,9 +67,10 @@ using Json.Schema.Generation.Intents;
 		{
 			var thisHash = GetHashCode();
 			var allContexts = GetChildContexts();
-			var defsByHashCode = allContexts.Where(g => g.Value.Count > 1 &&
-			                                            (g.Value.Context.Intents.Count != 1 ||
-			                                            !(g.Value.Context.Intents[0] is TypeIntent)))
+			var defsByHashCode = allContexts
+				.Where(g => g.Value.Count > 1 &&
+				            (g.Value.Context.Intents.Count != 1 ||
+				             !(g.Value.Context.Intents[0] is TypeIntent)))
 				.ToDictionary(g => g.Key, g => g.Value.Context);
 
 			var currentNames = new List<string>();
@@ -77,6 +78,8 @@ using Json.Schema.Generation.Intents;
 			var contextContainers = GetNestedContainers().ToList();
 			foreach (var def in defsByHashCode)
 			{
+				var baseContexts = new Dictionary<int, SchemaGeneratorContext>();
+				def.Value.GetBaseTypeContexts(baseContexts);
 				var name = def.Value.GetDefName(currentNames);
 				var refIntent = new RefIntent(new Uri(def.Key == thisHash ? "#" : $"#/$defs/{name}", UriKind.Relative));
 				var refContext = new SchemaGeneratorContext(def.Value.Type, null!, Configuration);
@@ -157,6 +160,23 @@ using Json.Schema.Generation.Intents;
 			}
 
 			return contextsReceived;
+		}
+
+		private void GetBaseTypeContexts(Dictionary<int, SchemaGeneratorContext> contexts)
+		{
+			var baseTypes = new List<Type>();
+			if (Type.BaseType != null &&
+			    (Type.BaseType.GetProperties().Any() || Type.BaseType.GetFields().Any()))
+				baseTypes.Add(Type.BaseType);
+			baseTypes.AddRange(Type.GetInterfaces().Where(t => t.GetProperties().Any()));
+
+			foreach (var type in baseTypes)
+			{
+				var baseContext = SchemaGenerationContextCache.Get(type, new List<Attribute>(), Configuration);
+				var hash = baseContext.GetHashCode();
+				contexts[hash] = baseContext;
+				baseContext.GetBaseTypeContexts(contexts);
+			}
 		}
 
 		/// <summary>
