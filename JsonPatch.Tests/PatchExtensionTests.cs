@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Json.More;
 using NUnit.Framework;
+#pragma warning disable 8604
 
 namespace Json.Patch.Tests
 {
@@ -47,7 +49,7 @@ namespace Json.Patch.Tests
 		}
 
 		[Test]
-		public void CreatePatch_Test()
+		public void CreatePatch()
 		{
 			var initial = new TestModel
 			{
@@ -73,7 +75,7 @@ namespace Json.Patch.Tests
 		}
 
 		[Test]
-		public void CreatePatch_Test2()
+		public void CreatePatch2()
 		{
 			var initial = JsonDocument.Parse("[{\"test\":\"test123\"},{\"test\":\"test321\"},{\"test\":[1,2,3]},{\"test\":[1,2,4]}]");
 			var expected = JsonDocument.Parse("[{\"test\":\"test123\"},{\"test\":\"test32132\"},{\"test1\":\"test321\"},{\"test\":[1,2,3]},{\"test\":[1,2,3]}]");
@@ -86,7 +88,7 @@ namespace Json.Patch.Tests
 		}
 
 		[Test]
-		public void Add_Test()
+		public void Add()
 		{
 			var initial = new TestModel
 			{
@@ -106,8 +108,31 @@ namespace Json.Patch.Tests
  			Assert.AreEqual(expected, patch);
 		}
 
+#if NET5_0_OR_GREATER
 		[Test]
-		public void Remove_Test()
+		public void Add_WithPreserveOption()
+		{
+			var initial = new TestModel
+			{
+				Id = Guid.NewGuid()
+			};
+			var target = new TestModel
+			{
+				Id = initial.Id,
+				Attributes = JsonDocument.Parse("[{\"test\":\"test123\"},{\"test\":\"test32132\"},{\"test1\":\"test321\"},{\"test\":[1,2,3]},{\"test\":[1,2,3]}]").RootElement
+			};
+			var patchExpectedStr = "[{\"op\":\"add\",\"path\":\"/Attributes\",\"value\":[{\"test\":\"test123\"},{\"test\":\"test32132\"},{\"test1\":\"test321\"},{\"test\":[1,2,3]},{\"test\":[1,2,3]}]}]";
+			var expected = JsonSerializer.Deserialize<JsonPatch>(patchExpectedStr);
+			var patch = initial.CreatePatch(target, new JsonSerializerOptions {IgnoreNullValues = true, ReferenceHandler = ReferenceHandler.Preserve});
+			
+			OutputPatch(expected);
+			OutputPatch(patch);
+ 			Assert.AreEqual(expected, patch);
+		}
+#endif
+
+		[Test]
+		public void Remove()
 		{
 			var initial = new TestModel
 			{
@@ -127,7 +152,7 @@ namespace Json.Patch.Tests
 		}
 
 		[Test]
-		public void Replace_Test()
+		public void Replace()
 		{
 			var initial = new TestModel
 			{
@@ -145,7 +170,7 @@ namespace Json.Patch.Tests
 		}
 		
 		[Test]
-		public void AddArray_Test()
+		public void AddArray()
 		{
 			var initial = JsonDocument.Parse("[1,2,3]");
 			var expected = JsonDocument.Parse("[1,2,3,4]");
@@ -157,7 +182,7 @@ namespace Json.Patch.Tests
 		}
 
 		[Test]
-		public void RemoveArray_Test()
+		public void RemoveArray()
 		{
 			var initial = JsonDocument.Parse("[1,2,3]");
 			var expected = JsonDocument.Parse("[1,2]");
@@ -169,7 +194,7 @@ namespace Json.Patch.Tests
 		}
 
 		[Test]
-		public void ReplaceArray_Test()
+		public void ReplaceArray()
 		{
 			var initial = JsonDocument.Parse("[1,2,3]");
 			var expected = JsonDocument.Parse("[1,2,1]");
@@ -182,7 +207,7 @@ namespace Json.Patch.Tests
 		}
 
 		[Test]
-		public void ComplexObject_Test()
+		public void ComplexObject()
 		{
 			var initial = new TestModel
 			{

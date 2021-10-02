@@ -7,6 +7,10 @@ using System.Text.Json;
 using Json.More;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
+#pragma warning disable 8604
+#pragma warning disable 8602
+#pragma warning disable 8618
 
 namespace Json.Patch.Tests.Suite
 {
@@ -17,9 +21,9 @@ namespace Json.Patch.Tests.Suite
 		private static readonly JsonSerializerOptions _options;
 
 		// ReSharper disable once MemberCanBePrivate.Global
-		public static IEnumerable TestData => _LoadTests();
+		public static IEnumerable TestData => LoadTests();
 
-		private static IEnumerable<TestCaseData> _LoadTests()
+		private static IEnumerable<TestCaseData> LoadTests()
 		{
 			var testsPath = Path.Combine(TestContext.CurrentContext.WorkDirectory, _testFolder);
 			var fileNames = Directory.GetFiles(testsPath, "*tests*.json");
@@ -51,7 +55,7 @@ namespace Json.Patch.Tests.Suite
 		{
 			var isOptional = test.Disabled;
 
-			PatchResult result = null;
+			PatchResult result = null!;
 			using (new TestExecutionContext.IsolatedContext())
 			{
 				try

@@ -27,12 +27,12 @@ namespace Json.Schema.Benchmark
 				return !schema.Validate(instanceText).Any();
 			}, iterations);
 
-			await Time($"json-everything {iterations} runs", async () =>
+			await Time($"json-everything {iterations} runs", () =>
 			{
 				var schema = JsonSchema.FromText(schemaText);
 				var instance = JsonDocument.Parse(instanceText);
 
-				return schema.Validate(instance.RootElement).IsValid;
+				return Task.FromResult(schema.Validate(instance.RootElement).IsValid);
 			}, iterations);
 		}
 

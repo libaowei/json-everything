@@ -2,6 +2,7 @@ using System;
 using System.Text.Json;
 using Json.More;
 using NUnit.Framework;
+#pragma warning disable 8602
 
 namespace Json.Patch.Tests
 {
@@ -10,7 +11,7 @@ namespace Json.Patch.Tests
 		[Test]
 		public void Test1()
 		{
-			var patch = JsonSerializer.Deserialize<Json.Patch.JsonPatch>(@"[
+			var patch = JsonSerializer.Deserialize<JsonPatch>(@"[
   { ""op"": ""replace"", ""path"": ""/baz"", ""value"": ""boo"" },
   { ""op"": ""add"", ""path"": ""/hello"", ""value"": [""world""] },
   { ""op"": ""remove"", ""path"": ""/foo"" }
@@ -24,7 +25,7 @@ namespace Json.Patch.Tests
 		[Test]
 		public void Add_Local()
 		{
-			var patch = JsonSerializer.Deserialize<Json.Patch.JsonPatch>(
+			var patch = JsonSerializer.Deserialize<JsonPatch>(
 				"[{ \"op\": \"add\", \"path\": \"/hello\", \"value\": [\"world\"] }]");
 
 			var element = JsonDocument.Parse("{\"something\":\"added\"}").RootElement;
@@ -39,7 +40,7 @@ namespace Json.Patch.Tests
 		[Test]
 		public void Add_Nested()
 		{
-			var patch = JsonSerializer.Deserialize<Json.Patch.JsonPatch>(
+			var patch = JsonSerializer.Deserialize<JsonPatch>(
 				"[{ \"op\": \"add\", \"path\": \"/inserted/hello\", \"value\": [\"world\"] }]");
 
 			var element = JsonDocument.Parse("{\"something\":\"added\",\"inserted\":{}}").RootElement;
@@ -56,7 +57,7 @@ namespace Json.Patch.Tests
 		[Test]
 		public void Add_Nested_ReplacesValue()
 		{
-			var patch = JsonSerializer.Deserialize<Json.Patch.JsonPatch>(
+			var patch = JsonSerializer.Deserialize<JsonPatch>(
 				"[{ \"op\": \"add\", \"path\": \"/inserted/hello\", \"value\": [\"world\"] }]");
 
 			var element = JsonDocument.Parse("{\"something\":\"added\",\"inserted\":{\"hello\":\"replace me\"}}").RootElement;
@@ -73,7 +74,7 @@ namespace Json.Patch.Tests
 		[Test]
 		public void Add_NestedPathNotFound()
 		{
-			var patch = JsonSerializer.Deserialize<Json.Patch.JsonPatch>(
+			var patch = JsonSerializer.Deserialize<JsonPatch>(
 				"[{ \"op\": \"add\", \"path\": \"/inserted/hello\", \"value\": [\"world\"] }]");
 
 			var element = JsonDocument.Parse("{\"something\":\"added\",\"insert here\":{}}").RootElement;
@@ -88,7 +89,7 @@ namespace Json.Patch.Tests
 		[Test]
 		public void Replace_Local()
 		{
-			var patch = JsonSerializer.Deserialize<Json.Patch.JsonPatch>(
+			var patch = JsonSerializer.Deserialize<JsonPatch>(
 				"[{ \"op\": \"replace\", \"path\": \"/something\", \"value\": \"boo\" }]");
 
 			var element = JsonDocument.Parse("{\"something\":\"added\"}").RootElement;

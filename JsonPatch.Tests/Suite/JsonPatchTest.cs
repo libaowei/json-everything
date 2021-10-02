@@ -3,6 +3,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Json.More;
 using Json.Schema;
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
+#pragma warning disable 8602
+#pragma warning disable 8618
 
 namespace Json.Patch.Tests.Suite
 {
@@ -67,8 +70,8 @@ namespace Json.Patch.Tests.Suite
 		public JsonElement Doc { get; set; }
 		public JsonElement ExpectedValue { get; set; }
 		public string Error { get; set; }
-		public string Comment { get; set; }
-		public Json.Patch.JsonPatch Patch { get; set; }
+		public string? Comment { get; set; }
+		public JsonPatch Patch { get; set; }
 		public bool Disabled { get; set; }
 
 		public bool ExpectsError => Error != null;
@@ -83,7 +86,7 @@ namespace Json.Patch.Tests.Suite
 			public JsonElement Expected { get; set; }
 			public string Error { get; set; }
 			public string Comment { get; set; }
-			public Json.Patch.JsonPatch Patch { get; set; }
+			public JsonPatch Patch { get; set; }
 			public bool Disabled { get; set; }
 		}
 
@@ -106,7 +109,7 @@ namespace Json.Patch.Tests.Suite
 				};
 			}
 			
-			return null;
+			return null!;
 		}
 
 		public override void Write(Utf8JsonWriter writer, JsonPatchTest value, JsonSerializerOptions options)
