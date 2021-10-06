@@ -1,4 +1,4 @@
-﻿namespace Json.Path
+﻿namespace Json.JmesPath
 {
 	internal interface ISelector
 	{

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Json.Path;
 using NUnit.Framework;
 
-namespace Json.Path.Tests
+namespace Json.JmesPath.Tests
 {
 	public class OtherParsingTests
 	{

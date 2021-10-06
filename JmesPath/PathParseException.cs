@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	/// <summary>
 	/// Thrown when an error occurs attempting to parse a JSON Path.

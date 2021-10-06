@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal class RootNodeSelector : SelectorBase
 	{

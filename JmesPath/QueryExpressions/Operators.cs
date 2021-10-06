@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Json.Path.QueryExpressions
+namespace Json.JmesPath.QueryExpressions
 {
 	internal static class Operators
 	{

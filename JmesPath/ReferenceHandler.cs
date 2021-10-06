@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Json.Pointer;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal static class ReferenceHandler
 	{

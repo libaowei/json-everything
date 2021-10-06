@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal class PropertyNameIndex : IObjectIndexExpression
 	{

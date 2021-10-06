@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal interface IObjectIndexExpression : IIndexExpression
 	{

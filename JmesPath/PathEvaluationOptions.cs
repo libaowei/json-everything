@@ -1,4 +1,4 @@
-﻿namespace Json.Path
+﻿namespace Json.JmesPath
 {
 	/// <summary>
 	/// Provides options for path evaluation.

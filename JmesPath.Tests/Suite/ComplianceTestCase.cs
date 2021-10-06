@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Json.More;
 
-namespace Json.Path.Tests.Suite
+namespace Json.JmesPath.Tests.Suite
 {
 	public class ComplianceTestCase
 	{

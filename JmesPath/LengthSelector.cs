@@ -4,7 +4,7 @@ using System.Text.Json;
 using Json.More;
 using Json.Pointer;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal class LengthSelector : SelectorBase
 	{

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.Json;
 using Json.Pointer;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal class IndexSelector : SelectorBase
 	{

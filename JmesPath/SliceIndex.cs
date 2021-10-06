@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal class SliceIndex : IArrayIndexExpression
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal static class UtilityExtensions
 	{

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using Json.More;
 
-namespace Json.Path.QueryExpressions
+namespace Json.JmesPath.QueryExpressions
 {
 	internal class OrOperator : IQueryExpressionOperator
 	{

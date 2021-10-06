@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	/// <summary>
 	/// Provides options for experimental features.

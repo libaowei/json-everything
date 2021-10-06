@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal class SimpleIndex : IArrayIndexExpression
 	{

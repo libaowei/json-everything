@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	internal class ErrorSelector : ISelector
 	{

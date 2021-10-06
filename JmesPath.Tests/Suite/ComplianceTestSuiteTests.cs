@@ -8,9 +8,10 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Json.More;
+using Json.Path;
 using NUnit.Framework;
 
-namespace Json.Path.Tests.Suite
+namespace Json.JmesPath.Tests.Suite
 {
 	public class ComplianceTestSuiteTests
 	{

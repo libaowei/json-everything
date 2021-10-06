@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Json.Path
+namespace Json.JmesPath
 {
 	/// <summary>
 	/// The results of a JSON Path evaluation against a JSON instance.

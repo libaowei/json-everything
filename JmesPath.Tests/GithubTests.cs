@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Json.Path;
 using NUnit.Framework;
 
-namespace Json.Path.Tests
+namespace Json.JmesPath.Tests
 {
 	public class GithubTests
 	{
