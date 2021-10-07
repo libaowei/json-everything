@@ -56,37 +56,34 @@ namespace Json.JmesPath.Tests.Suite
 			Console.WriteLine(testCase);
 			Console.WriteLine();
 
+			JsonPath? path = null;
 			PathResult actual = null;
 
 			var time = Debugger.IsAttached ? int.MaxValue : 100;
 			using var cts = new CancellationTokenSource(time);
 			Task.Run(() =>
 			{
-				if (!JsonPath.TryParse(testCase.Expression, out var path)) return;
+				if (!JsonPath.TryParse(testCase.Expression, out path)) return;
 
 				if (testCase.Given.ValueKind == JsonValueKind.Undefined) return;
 
 				actual = path.Evaluate(testCase.Given);
 			}, cts.Token).Wait(cts.Token);
 
-			//if (path != null && testCase.InvalidSelector)
-			//	Assert.Inconclusive($"{testCase.Selector} is not a valid path but was parsed without error.");
+			if (path == null)
+			{
+				Assert.AreEqual("syntax", testCase.Error, $"{testCase.Expression} failed to parse.");
+				return;
+			}
 
-			//if (actual == null)
-			//{
-			//	if (testCase.InvalidSelector) return;
-			//	Assert.Fail($"Could not parse path: {testCase.Selector}");
-			//}
+			Assert.AreEqual(testCase.Error, actual?.Error, $"Error state {actual?.Error ?? "null"} does not match expected {testCase.Error ?? "null"}");
+			if (!string.IsNullOrWhiteSpace(testCase.Error)) return;
 
-			var actualValues = actual.Matches.Select(m => m.Value).AsJsonElement();
-			Console.WriteLine($"Actual (values): {actualValues}");
-			Console.WriteLine();
-			Console.WriteLine($"Actual: {JsonSerializer.Serialize(actual)}");
-			//if (testCase.InvalidSelector)
-			//	Assert.Fail($"{testCase.Selector} is not a valid path.");
+			var result = JsonSerializer.Serialize(actual);
+			Console.WriteLine($"Actual: {result}");
 
 			var expected = testCase.Result;
-			Assert.IsTrue(expected.IsEquivalentTo(actualValues));
+			Assert.IsTrue(expected.IsEquivalentTo(JsonDocument.Parse(result).RootElement));
 		}
 	}
 }

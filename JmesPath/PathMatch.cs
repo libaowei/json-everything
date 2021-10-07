@@ -20,7 +20,7 @@ namespace Json.JmesPath
 		internal PathMatch(in JsonElement value, in JsonPointer location)
 		{
 			Value = value;
-			Location = location;
+			Location = location; 
 		}
 	}
 }

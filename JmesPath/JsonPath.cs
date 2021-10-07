@@ -78,7 +78,7 @@ namespace Json.JmesPath
 		/// <param name="source">The source string.</param>
 		/// <param name="path">The resulting path.</param>
 		/// <returns><code>true</code> if successful; otherwise <code>false</code>.</returns>
-		public static bool TryParse(string source, out JsonPath? path)
+		public static bool TryParse(string source, [NotNullWhen(true)] out JsonPath? path)
 		{
 			var i = 0;
 			var span = source.AsSpan();
