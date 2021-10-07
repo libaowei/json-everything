@@ -10,3 +10,6 @@
 [submodule "ref-repos/jsonpath-compliance-test-suite"]
 	path = ref-repos/jsonpath-compliance-test-suite
 	url = https://github.com/jsonpath-standard/jsonpath-compliance-test-suite.git
+[submodule "ref-repos/jmespath.test"]
+	path = ref-repos/jmespath.test
+	url = https://github.com/jmespath/jmespath.test.git

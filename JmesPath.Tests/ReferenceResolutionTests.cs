@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text.Json;
-using Json.Path;
 using NUnit.Framework;
 
 namespace Json.JmesPath.Tests

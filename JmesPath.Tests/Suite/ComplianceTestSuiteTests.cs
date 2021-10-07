@@ -8,14 +8,13 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Json.More;
-using Json.Path;
 using NUnit.Framework;
 
 namespace Json.JmesPath.Tests.Suite
 {
 	public class ComplianceTestSuiteTests
 	{
-		private const string _testsFile = @"../../../../ref-repos/jsonpath-compliance-test-suite/cts.json";
+		private const string _testsFile = @"../../../../ref-repos/jmespath.test/cts.json";
 		private static readonly string[] _notSupported =
 			{
 			};

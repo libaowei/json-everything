@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Text.Json;
 using Json.More;
-using Json.Path;
 using NUnit.Framework;
 
 namespace Json.JmesPath.Tests
