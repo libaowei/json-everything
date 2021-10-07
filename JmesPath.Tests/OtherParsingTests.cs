@@ -26,7 +26,7 @@ namespace Json.JmesPath.Tests
 		[TestCaseSource(nameof(SuccessCases))]
 		public void Parse(string path)
 		{
-			Console.WriteLine(JsonPath.Parse(path));
+			Console.WriteLine(JmesPath.Parse(path));
 		}
 	}
 }

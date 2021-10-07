@@ -34,7 +34,7 @@ namespace Json.JmesPath.Tests.Suite
 						Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
 						PropertyNameCaseInsensitive = true
 					});
-					allTests.AddRange(suite.SelectMany(x => x.Cases.Select(c =>
+					allTests.AddRange(suite!.SelectMany(x => x.Cases.Select(c =>
 					{
 						c.Given = x.Given;
 						return c;
@@ -56,14 +56,14 @@ namespace Json.JmesPath.Tests.Suite
 			Console.WriteLine(testCase);
 			Console.WriteLine();
 
-			JsonPath? path = null;
-			PathResult actual = null;
+			JmesPath? path = null;
+			PathResult? actual = null;
 
 			var time = Debugger.IsAttached ? int.MaxValue : 100;
 			using var cts = new CancellationTokenSource(time);
 			Task.Run(() =>
 			{
-				if (!JsonPath.TryParse(testCase.Expression, out path)) return;
+				if (!JmesPath.TryParse(testCase.Expression, out path)) return;
 
 				if (testCase.Given.ValueKind == JsonValueKind.Undefined) return;
 
@@ -76,6 +76,7 @@ namespace Json.JmesPath.Tests.Suite
 				return;
 			}
 
+			// ReSharper disable once ConstantNullCoalescingCondition
 			Assert.AreEqual(testCase.Error, actual?.Error, $"Error state {actual?.Error ?? "null"} does not match expected {testCase.Error ?? "null"}");
 			if (!string.IsNullOrWhiteSpace(testCase.Error)) return;
 

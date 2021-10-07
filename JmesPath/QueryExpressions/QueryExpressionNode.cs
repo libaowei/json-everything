@@ -7,7 +7,7 @@ namespace Json.JmesPath.QueryExpressions
 {
 	internal class QueryExpressionNode
 	{
-		private readonly JsonPath? _path;
+		private readonly JmesPath? _path;
 		private readonly QueryExpressionNode? _left;
 		private QueryExpressionNode? _right;
 		private QueryExpressionType? _outputType;
@@ -22,7 +22,7 @@ namespace Json.JmesPath.QueryExpressions
 			_value = value;
 		}
 
-		public QueryExpressionNode(JsonPath path)
+		public QueryExpressionNode(JmesPath path)
 		{
 			_path = path;
 			_outputType = QueryExpressionType.InstanceDependent;
@@ -75,7 +75,7 @@ namespace Json.JmesPath.QueryExpressions
 				return true;
 			}
 
-			if (JsonPath.TryParse(span, ref i, true, out var path))
+			if (JmesPath.TryParse(span, ref i, true, out var path))
 			{
 				node = new QueryExpressionNode(path);
 				return true;

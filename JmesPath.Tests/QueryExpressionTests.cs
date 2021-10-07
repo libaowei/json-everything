@@ -164,7 +164,7 @@ namespace Json.JmesPath.Tests
 		public void LengthMinusOne()
 		{
 			var exp = new QueryExpressionNode(
-				new QueryExpressionNode(JsonPath.Parse("@.length")),
+				new QueryExpressionNode(JmesPath.Parse("@.length")),
 				Operators.Subtraction,
 				new QueryExpressionNode(1.AsJsonElement())
 			);

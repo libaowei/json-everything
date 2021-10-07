@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 using Json.More;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable CollectionNeverUpdated.Global
+#pragma warning disable 8618
 
 namespace Json.JmesPath.Tests.Suite
 {

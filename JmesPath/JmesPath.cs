@@ -9,7 +9,7 @@ namespace Json.JmesPath
 	/// <summary>
 	/// Represents a JSON Path.
 	/// </summary>
-	public class JsonPath
+	public class JmesPath
 	{
 		private delegate bool TryParseMethod(ReadOnlySpan<char> span, ref int i, [NotNullWhen(true)] out IIndexExpression? index);
 
@@ -30,18 +30,18 @@ namespace Json.JmesPath
 
 		private readonly IEnumerable<ISelector> _nodes;
 
-		private JsonPath(IEnumerable<ISelector> nodes)
+		private JmesPath(IEnumerable<ISelector> nodes)
 		{
 			_nodes = nodes;
 		}
 
 		/// <summary>
-		/// Parses a <see cref="JsonPath"/> from a string.
+		/// Parses a <see cref="JmesPath"/> from a string.
 		/// </summary>
 		/// <param name="source">The source string.</param>
 		/// <returns>The parsed path.</returns>
 		/// <exception cref="PathParseException">Thrown if a syntax error occurred.</exception>
-		public static JsonPath Parse(string source)
+		public static JmesPath Parse(string source)
 		{
 			var i = 0;
 			var span = source.AsSpan();
@@ -69,23 +69,23 @@ namespace Json.JmesPath
 			if (!nodes.Any())
 				throw new PathParseException(i, "No path found");
 
-			return new JsonPath(nodes);
+			return new JmesPath(nodes);
 		}
 
 		/// <summary>
-		/// Attempts to parse a <see cref="JsonPath"/> from a string.
+		/// Attempts to parse a <see cref="JmesPath"/> from a string.
 		/// </summary>
 		/// <param name="source">The source string.</param>
 		/// <param name="path">The resulting path.</param>
 		/// <returns><code>true</code> if successful; otherwise <code>false</code>.</returns>
-		public static bool TryParse(string source, [NotNullWhen(true)] out JsonPath? path)
+		public static bool TryParse(string source, [NotNullWhen(true)] out JmesPath? path)
 		{
 			var i = 0;
 			var span = source.AsSpan();
 			return TryParse(span, ref i, false, out path);
 		}
 
-		internal static bool TryParse(ReadOnlySpan<char> span, ref int i, bool allowTrailingContent, [NotNullWhen(true)] out JsonPath? path)
+		internal static bool TryParse(ReadOnlySpan<char> span, ref int i, bool allowTrailingContent, [NotNullWhen(true)] out JmesPath? path)
 		{
 			var nodes = new List<ISelector>();
 			while (i < span.Length)
@@ -115,7 +115,7 @@ namespace Json.JmesPath
 				return false;
 			}
 
-			path = new JsonPath(nodes);
+			path = new JmesPath(nodes);
 			return true;
 		}
 
