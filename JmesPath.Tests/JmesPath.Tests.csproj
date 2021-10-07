@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JsonPath\JsonPath.csproj" />
+    <ProjectReference Include="..\JmesPath\JmesPath.csproj" />
   </ItemGroup>
 
 </Project>

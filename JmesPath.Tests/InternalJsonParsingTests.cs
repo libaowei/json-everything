@@ -6,15 +6,15 @@ namespace Json.JmesPath.Tests
 {
 	public class InternalJsonParsingTests
 	{
-		//[TestCaseSource(nameof(GetJson))]
-		//public static void Parse(string json)
-		//{
-		//	int i = 0;
-		//	if (!json.AsSpan().TryParseJsonElement(ref i, out var element))
-		//		Assert.Fail();
+		[TestCaseSource(nameof(GetJson))]
+		public static void Parse(string json)
+		{
+			int i = 0;
+			if (!json.AsSpan().TryParseJsonElement(ref i, out var element))
+				Assert.Fail();
 
-		//	Console.WriteLine(element);
-		//}
+			Console.WriteLine(element);
+		}
 
 		private static IEnumerable<string> GetJson()
 		{
