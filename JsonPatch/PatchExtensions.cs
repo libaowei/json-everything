@@ -38,6 +38,7 @@ namespace Json.Patch
 		public static TTarget Apply<TOriginal, TTarget>(this JsonPatch patch, TOriginal obj, JsonSerializerOptions? options = null)
 		{
 			using var doc = JsonDocument.Parse(JsonSerializer.Serialize(obj, options));
+			Console.WriteLine(JsonSerializer.Serialize(doc, new JsonSerializerOptions { WriteIndented = true }));
 			var patchResult = patch.Apply(doc.RootElement);
 			if (!patchResult.IsSuccess)
 				throw new InvalidOperationException($"{patchResult.Error} Operation: {patchResult.Operation}");

@@ -16,7 +16,6 @@ namespace Json.JmesPath
 		private static readonly List<TryParseMethod> _parseMethods =
 			new List<TryParseMethod>
 			{
-				ContainerQueryIndex.TryParse,
 				ItemQueryIndex.TryParse,
 				PropertyNameIndex.TryParse,
 				SliceIndex.TryParse,
@@ -50,12 +49,16 @@ namespace Json.JmesPath
 			{
 				var node = span[i] switch
 				{
-					'$' => AddRootNode(span, ref i),
 					'@' => AddLocalRootNode(span, ref i),
 					'.' => AddPropertyOrRecursive(span, ref i),
 					'[' => AddIndex(span, ref i),
 					_ => null
 				};
+				if (node == null)
+				{
+					if (IsValidToStartPropertyName(span[i]))
+						node = AddPropertyOrRecursive(span, ref i);
+				}
 
 				if (node == null)
 					throw new PathParseException(i, "Could not identify selector");
@@ -92,12 +95,16 @@ namespace Json.JmesPath
 			{
 				var node = span[i] switch
 				{
-					'$' => AddRootNode(span, ref i),
 					'@' => AddLocalRootNode(span, ref i),
 					'.' => AddPropertyOrRecursive(span, ref i),
 					'[' => AddIndex(span, ref i),
 					_ => null
 				};
+				if (node == null)
+				{
+					if (IsValidToStartPropertyName(span[i]))
+						node = AddPropertyOrRecursive(span, ref i);
+				}
 
 				if (node == null || node is ErrorSelector)
 				{
@@ -119,12 +126,6 @@ namespace Json.JmesPath
 			return true;
 		}
 
-		private static ISelector AddRootNode(ReadOnlySpan<char> span, ref int i)
-		{
-			i++;
-			return new RootNodeSelector();
-		}
-
 		private static ISelector AddLocalRootNode(ReadOnlySpan<char> span, ref int i)
 		{
 			i++;
@@ -134,19 +135,6 @@ namespace Json.JmesPath
 		private static ISelector AddPropertyOrRecursive(ReadOnlySpan<char> span, ref int i)
 		{
 			var slice = span[i..];
-			if (slice.StartsWith("..") || slice.StartsWith(".["))
-			{
-				i++;
-				return new RecursiveDescentSelector();
-			}
-
-			if (slice.StartsWith(".*"))
-			{
-				i += 2;
-				return new PropertySelector(null);
-			}
-
-			slice = slice[1..];
 			var propertyNameLength = 0;
 			while (propertyNameLength < slice.Length && IsValidForPropertyName(slice[propertyNameLength]))
 			{
@@ -154,7 +142,7 @@ namespace Json.JmesPath
 			}
 
 			var propertyName = slice[..propertyNameLength];
-			i += 1 + propertyNameLength;
+			i += propertyNameLength;
 			return _reservedWords.TryGetValue(propertyName.ToString(), out var node)
 				? node
 				: new PropertySelector(propertyName.ToString());
@@ -162,11 +150,16 @@ namespace Json.JmesPath
 
 		private static bool IsValidForPropertyName(char ch)
 		{
+			return IsValidToStartPropertyName(ch) ||
+			       ch.In('0'..('9' + 1)) ||
+			       ch.In(0x80..0x10FFFF);
+		}
+
+		private static bool IsValidToStartPropertyName(char ch)
+		{
 			return ch.In('a'..('z' + 1)) ||
 			       ch.In('A'..('Z' + 1)) ||
-			       ch.In('0'..('9' + 1)) ||
-			       ch.In('_') ||
-			       ch.In(0x80..0x10FFFF);
+			       ch.In('_');
 		}
 
 		private static ISelector AddIndex(ReadOnlySpan<char> span, ref int i)
@@ -199,7 +192,7 @@ namespace Json.JmesPath
 			}
 
 			if (ch != ']')
-				return new ErrorSelector("Expected ']' or ','");
+				return new ErrorSelector("Expected ']' or ','"); 
 			
 			return new IndexSelector(indices);
 		}
@@ -231,19 +224,14 @@ namespace Json.JmesPath
 		/// Evaluates the path against a JSON instance.
 		/// </summary>
 		/// <param name="root">The root of the JSON instance.</param>
-		/// <param name="options">Evaluation options.</param>
 		/// <returns>The results of the evaluation.</returns>
-		public PathResult Evaluate(JsonElement root, PathEvaluationOptions? options = null)
+		public PathResult Evaluate(JsonElement root)
 		{
-			options ??= new PathEvaluationOptions();
-
-			var context = new EvaluationContext(root, options);
+			var context = new EvaluationContext(root);
 
 			foreach (var node in _nodes)
 			{
 				node.Evaluate(context);
-
-				ReferenceHandler.Handle(context);
 			}
 
 			return context.BuildResult();

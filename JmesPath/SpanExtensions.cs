@@ -43,13 +43,13 @@ namespace Json.JmesPath
 		// expects the full expression, including the ()
 		public static bool TryParseExpression(this ReadOnlySpan<char> span, ref int i, [NotNullWhen(true)] out QueryExpressionNode? expression)
 		{
-			if (span[i] != '(')
-			{
-				expression = null;
-				return false;
-			}
+			//if (span[i] != '(')
+			//{
+			//	expression = null;
+			//	return false;
+			//}
 
-			i++;
+			//i++;
 			span.ConsumeWhitespace(ref i);
 			if (!QueryExpressionNode.TryParseSingleValue(span, ref i, out var left))
 			{

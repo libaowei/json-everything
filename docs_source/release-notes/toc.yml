@@ -12,7 +12,9 @@
   href: json-schema-unique-keys.md
 - name: JsonPath.Net
   href: json-path.md
+- name: JmesPath
+  href: jmes-path.md
 - name: JsonPatch.Net
   href: json-patch.md
-- name: JsonLogic.Net
+- name: JsonLogic
   href: json-logic.md

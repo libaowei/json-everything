@@ -46,7 +46,7 @@ namespace Json.JmesPath
 
 		internal static bool TryParse(ReadOnlySpan<char> span, ref int i, [NotNullWhen(true)] out IIndexExpression? index)
 		{
-			if (span[i] != '?' || span[i+1] != '(')
+			if (span[i] != '?')
 			{
 				i = -1;
 				index = null;
